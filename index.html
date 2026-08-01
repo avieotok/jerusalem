@@ -135,6 +135,11 @@ header{padding:20px 0 0}
 .sf-lab{font-size:12.5px; font-weight:700}
 .sf-hi .sf-lab{color:#1d6b71} .sf-mid .sf-lab{color:#8A5F10} .sf-lo .sf-lab{color:var(--pomegranate)}
 .sf-note{margin:6px 0 0; font-size:14.3px; line-height:1.55; color:var(--ink-soft)}
+.sf-badge{letter-spacing:1px}
+.sf-hib{background:rgba(46,143,150,.13); color:#1d6b71}
+.sf-midb{background:rgba(190,130,30,.15); color:#8A5F10}
+.sf-lob{background:rgba(174,47,48,.12); color:var(--pomegranate)}
+.ver{margin-top:10px; font-size:12px; opacity:.7; letter-spacing:.05em}
 .btn.book{background:var(--pomegranate); border-color:var(--pomegranate); color:#fff}
 .story{margin:0 0 13px; border:1px solid var(--line); border-radius:11px;
   background:linear-gradient(180deg,#fbfaf6,#fff); overflow:hidden}
@@ -282,15 +287,15 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
 #t-d4:checked ~ .app label[for="t-d4"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 #t-d4:checked ~ .app label[for="t-d4"] small{opacity:.85}
 #t-d4:checked ~ .app #panel-d4{display:block}
+#t-notes:checked ~ .app label[for="t-notes"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+#t-notes:checked ~ .app label[for="t-notes"] small{opacity:.85}
+#t-notes:checked ~ .app #panel-notes{display:block}
 #t-info:checked ~ .app label[for="t-info"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 #t-info:checked ~ .app label[for="t-info"] small{opacity:.85}
 #t-info:checked ~ .app #panel-info{display:block}
 #t-park:checked ~ .app label[for="t-park"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 #t-park:checked ~ .app label[for="t-park"] small{opacity:.85}
 #t-park:checked ~ .app #panel-park{display:block}
-#t-notes:checked ~ .app label[for="t-notes"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
-#t-notes:checked ~ .app label[for="t-notes"] small{opacity:.85}
-#t-notes:checked ~ .app #panel-notes{display:block}
 #t-prep:checked ~ .app label[for="t-prep"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 #t-prep:checked ~ .app label[for="t-prep"] small{opacity:.85}
 #t-prep:checked ~ .app #panel-prep{display:block}
@@ -320,7 +325,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
   <circle cx="0" cy="11" r="1.6" fill="#AE2F30"/><circle cx="26" cy="11" r="1.6" fill="#AE2F30"/>
 </pattern></defs></svg>
 
-<input class="sr" type="radio" name="mode" id="m-transit" checked><input class="sr" type="radio" name="mode" id="m-car"><input class="sr" type="radio" name="tab" id="t-d1" checked><input class="sr" type="radio" name="tab" id="t-d2"><input class="sr" type="radio" name="tab" id="t-d3"><input class="sr" type="radio" name="tab" id="t-d4"><input class="sr" type="radio" name="tab" id="t-info"><input class="sr" type="radio" name="tab" id="t-park"><input class="sr" type="radio" name="tab" id="t-notes"><input class="sr" type="radio" name="tab" id="t-prep"><input class="sr" type="radio" name="nmode" id="n-type" checked><input class="sr" type="radio" name="nmode" id="n-draw"><input class="sr" type="radio" name="filter" id="f-all" checked><input class="sr" type="radio" name="filter" id="f-hidden"><input class="sr" type="radio" name="filter" id="f-romance"><input class="sr" type="radio" name="filter" id="f-food">
+<input class="sr" type="radio" name="mode" id="m-transit" checked><input class="sr" type="radio" name="mode" id="m-car"><input class="sr" type="radio" name="tab" id="t-d1" checked><input class="sr" type="radio" name="tab" id="t-d2"><input class="sr" type="radio" name="tab" id="t-d3"><input class="sr" type="radio" name="tab" id="t-d4"><input class="sr" type="radio" name="tab" id="t-notes"><input class="sr" type="radio" name="tab" id="t-info"><input class="sr" type="radio" name="tab" id="t-park"><input class="sr" type="radio" name="tab" id="t-prep"><input class="sr" type="radio" name="nmode" id="n-type" checked><input class="sr" type="radio" name="nmode" id="n-draw"><input class="sr" type="radio" name="filter" id="f-all" checked><input class="sr" type="radio" name="filter" id="f-hidden"><input class="sr" type="radio" name="filter" id="f-romance"><input class="sr" type="radio" name="filter" id="f-food">
 
 <div class="app">
   <header>
@@ -354,7 +359,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
     </div>
   </header>
 
-  <nav class="tabs"><div class="tabs-in"><label class="tab" for="t-d1" id="lab-t-d1">יום ג׳ <small>4.8</small></label><label class="tab" for="t-d2" id="lab-t-d2">יום ד׳ <small>5.8</small></label><label class="tab" for="t-d3" id="lab-t-d3">יום ה׳ <small>6.8</small></label><label class="tab" for="t-d4" id="lab-t-d4">יום ו׳ <small>7.8</small></label><label class="tab" for="t-info" id="lab-t-info">הערבים שלנו</label><label class="tab" for="t-park" id="lab-t-park">חניה ופנגו</label><label class="tab" for="t-notes" id="lab-t-notes">פנקס</label><label class="tab" for="t-prep" id="lab-t-prep">להתכונן</label></div></nav>
+  <nav class="tabs"><div class="tabs-in"><label class="tab" for="t-d1" id="lab-t-d1">יום ג׳ <small>4.8</small></label><label class="tab" for="t-d2" id="lab-t-d2">יום ד׳ <small>5.8</small></label><label class="tab" for="t-d3" id="lab-t-d3">יום ה׳ <small>6.8</small></label><label class="tab" for="t-d4" id="lab-t-d4">יום ו׳ <small>7.8</small></label><label class="tab" for="t-notes" id="lab-t-notes">✎ פנקס</label><label class="tab" for="t-info" id="lab-t-info">הערבים שלנו</label><label class="tab" for="t-park" id="lab-t-park">חניה ופנגו</label><label class="tab" for="t-prep" id="lab-t-prep">להתכונן</label></div></nav>
 
   <main class="wrap">
     <div class="filters"><label class="chip" for="f-all">הכול</label><label class="chip" for="f-hidden">רק נסתרים</label><label class="chip" for="f-romance">רגעים לשניים</label><label class="chip" for="f-food">אוכל</label></div>
@@ -374,7 +379,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">10:00</span>
             <span class="c-main">
               <span class="c-title">הגעה לירושלים ופריקת מזוודות</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -408,7 +413,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">10:20</span>
             <span class="c-main">
               <span class="c-title">החניית הרכב לכל השהות</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -442,7 +447,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">10:45</span>
             <span class="c-main">
               <span class="c-title">הליכה דרך ממילא לשער יפו</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -476,7 +481,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">11:00</span>
             <span class="c-main">
               <span class="c-title">מוזיאון מגדל דוד</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -510,7 +515,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">13:00</span>
             <span class="c-main">
               <span class="c-title">טיילת החומות · המסלול הצפוני</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-midb">★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -552,7 +557,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">14:20</span>
             <span class="c-main">
               <span class="c-title">צהריים בהוספיס האוסטרי</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag t-food">אוכל</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag t-food">אוכל</span><span class="tag sf-badge sf-midb">★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -586,7 +591,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">15:30</span>
             <span class="c-main">
               <span class="c-title">מערת צדקיהו</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-lob">★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -620,7 +625,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">17:00</span>
             <span class="c-main">
               <span class="c-title">חזרה למלון · צ׳ק־אין ומנוחה</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -654,7 +659,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">18:45</span>
             <span class="c-main">
               <span class="c-title">הכותל בשעת בין ערביים</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -688,7 +693,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">20:30</span>
             <span class="c-main">
               <span class="c-title">מחנה יהודה בלילה</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag t-food">אוכל</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag t-food">אוכל</span><span class="tag sf-badge sf-hib">★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -730,7 +735,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">08:00</span>
             <span class="c-main">
               <span class="c-title">עיר דוד · מנהרת חזקיהו</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-midb">★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -772,7 +777,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">10:30</span>
             <span class="c-main">
               <span class="c-title">דרך עולי הרגל</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -806,7 +811,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">12:45</span>
             <span class="c-main">
               <span class="c-title">מנזר המצלבה</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -840,7 +845,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">14:00</span>
             <span class="c-main">
               <span class="c-title">מוזיאון ישראל</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -874,7 +879,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">18:15</span>
             <span class="c-main">
               <span class="c-title">טיילת ארמון הנציב</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-hib">★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -908,7 +913,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">20:30</span>
             <span class="c-main">
               <span class="c-title">ערב בעמק רפאים</span>
-              <span class="c-tags"><span class="tag t-food">אוכל</span></span>
+              <span class="c-tags"><span class="tag t-food">אוכל</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -950,7 +955,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">08:30</span>
             <span class="c-main">
               <span class="c-title">רכבת קלה עד הדסה עין כרם</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -984,7 +989,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">09:15</span>
             <span class="c-main">
               <span class="c-title">מעיין מרים ולב הכפר</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1018,7 +1023,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">10:15</span>
             <span class="c-main">
               <span class="c-title">מנזר האחיות ציון</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1060,7 +1065,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">12:30</span>
             <span class="c-main">
               <span class="c-title">צהריים בעין כרם</span>
-              <span class="c-tags"><span class="tag t-food">אוכל</span></span>
+              <span class="c-tags"><span class="tag t-food">אוכל</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1094,7 +1099,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">14:15</span>
             <span class="c-main">
               <span class="c-title">יד ושם</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1128,7 +1133,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">19:00</span>
             <span class="c-main">
               <span class="c-title">התחנה הראשונה</span>
-              <span class="c-tags"><span class="tag t-food">אוכל</span></span>
+              <span class="c-tags"><span class="tag t-food">אוכל</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1170,7 +1175,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">08:30</span>
             <span class="c-main">
               <span class="c-title">נחלאות</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1204,7 +1209,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">09:45</span>
             <span class="c-main">
               <span class="c-title">מחנה יהודה בבוקר שישי</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag t-food">אוכל</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag t-food">אוכל</span><span class="tag sf-badge sf-hib">★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1246,7 +1251,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">12:15</span>
             <span class="c-main">
               <span class="c-title">ימין משה וטחנת הרוח</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1280,7 +1285,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <span class="c-time">13:30</span>
             <span class="c-main">
               <span class="c-title">חזרה למלון ויציאה</span>
-              <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
+              <span class="c-tags"><span class="tag t-famous">מתויר</span><span class="tag sf-badge sf-hib">★★★★★</span></span>
             </span>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
@@ -1584,6 +1589,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
   <footer>
     <div class="sig">נסיעה טובה, אבידן ואתי.</div>
     <div class="tally-line">עצירות שסימנתם: <span class="tally-num"></span> מתוך 26</div>
+    <div class="ver">גרסה 4 · עודכן 1.8.2026 · פנקס, דירוג ביטחוני, טלפונים והזמנות</div>
     <div style="margin-top:6px">שעות פתיחה משתנות — כדאי לאמת ביום עצמו. מסלולים בזמן אמת: Moovit.</div>
   </footer>
 </div>
@@ -1766,7 +1772,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
 <script>
 if (location.protocol === "https:" && "serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").catch(function () {});
+    navigator.serviceWorker.register("sw.js").then(function (r) { r.update(); }).catch(function () {});
   });
 }
 </script>
