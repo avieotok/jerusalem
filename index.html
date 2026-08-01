@@ -135,6 +135,21 @@ header{padding:20px 0 0}
 .sf-lab{font-size:12.5px; font-weight:700}
 .sf-hi .sf-lab{color:#1d6b71} .sf-mid .sf-lab{color:#8A5F10} .sf-lo .sf-lab{color:var(--pomegranate)}
 .sf-note{margin:6px 0 0; font-size:14.3px; line-height:1.55; color:var(--ink-soft)}
+.note{margin-top:12px; border-top:1px dashed var(--line); padding-top:10px}
+.note-sum{cursor:pointer; list-style:none; font-size:13.2px; font-weight:700;
+  color:var(--turq); display:flex; align-items:center; gap:6px}
+.note-sum::-webkit-details-marker{display:none}
+.note-ta{width:100%; margin-top:9px; min-height:96px; resize:vertical; padding:11px 12px;
+  border:1px solid var(--line); border-radius:10px; font-family:'Assistant',sans-serif;
+  font-size:15.2px; line-height:1.6; color:var(--ink); background:#FCFBF7; outline:none}
+.note-ta:focus{border-color:var(--turq); background:#fff}
+.note-ta::placeholder{color:#A3ADBB}
+.has-note .note-sum::after{content:'CF'; color:var(--pomegranate); font-size:9px}
+.roll{display:grid; gap:10px; margin-top:12px}
+.roll-item{border:1px solid var(--line); border-radius:11px; padding:11px 13px; background:#fff}
+.roll-t{font-weight:700; font-size:14.5px; color:var(--cobalt-deep); margin-bottom:3px}
+.roll-x{font-size:14.8px; color:var(--ink-soft); white-space:pre-wrap; line-height:1.6}
+.roll-empty{color:var(--ink-soft); font-size:14.5px; text-align:center; padding:18px 0}
 .sf-badge{letter-spacing:1px}
 .sf-hib{background:rgba(46,143,150,.13); color:#1d6b71}
 .sf-midb{background:rgba(190,130,30,.15); color:#8A5F10}
@@ -402,6 +417,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026298666">☎ 02-6298666</a>
               <label class="btn check" for="c-d1-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-0" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -436,6 +455,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d1-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-1" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -470,6 +493,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d1-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-2" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -504,6 +531,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026265333">☎ 02-6265333</a><a class="btn" href="tel:2884">☎ *2884</a>
               <label class="btn check" for="c-d1-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-3" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -538,6 +569,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026277550">☎ 02-6277550</a>
               <label class="btn check" for="c-d1-4"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-4" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -580,6 +615,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026265800">☎ 02-6265800</a>
               <label class="btn check" for="c-d1-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-5" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -614,6 +653,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026277550">☎ 02-6277550</a>
               <label class="btn check" for="c-d1-6"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-6" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -648,6 +691,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026298666">☎ 02-6298666</a>
               <label class="btn check" for="c-d1-7"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-7" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -682,6 +729,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d1-8"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-8" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -716,6 +767,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d1-9"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d1-9" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li></ul>
@@ -758,6 +813,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d2-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d2-0" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -800,6 +859,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d2-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d2-1" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -834,6 +897,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d2-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d2-2" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -868,6 +935,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026708855">☎ 02-6708855</a>
               <label class="btn check" for="c-d2-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d2-3" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -902,6 +973,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d2-4"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d2-4" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -936,6 +1011,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d2-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d2-5" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li></ul>
@@ -978,6 +1057,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d3-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d3-0" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1012,6 +1095,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d3-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d3-1" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1046,6 +1133,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026415738">☎ 02-6415738</a>
               <label class="btn check" for="c-d3-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d3-2" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1088,6 +1179,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d3-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d3-3" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1122,6 +1217,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d3-4"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d3-4" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1156,6 +1255,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d3-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d3-5" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li></ul>
@@ -1198,6 +1301,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d4-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d4-0" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1232,6 +1339,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d4-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d4-1" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1274,6 +1385,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               
               <label class="btn check" for="c-d4-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d4-2" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li>
@@ -1308,6 +1423,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn" href="tel:026298666">☎ 02-6298666</a>
               <label class="btn check" for="c-d4-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
+            <details class="note">
+              <summary class="note-sum">✎ ההערות שלנו על המקום הזה</summary>
+              <textarea class="note-ta" data-note="c-d4-3" placeholder="מה היה כאן. מה שווה לזכור, כמה שילמנו, מה אתי אמרה."></textarea>
+            </details>
           </div>
         </details>
       </li></ul>
@@ -1330,6 +1449,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7802,35.2258" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+97226279111">☎ 02-6279111</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-0" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div>
       <div class="dine-card ">
         <div class="dine-when">יום ג׳ · חלופה</div>
@@ -1340,6 +1463,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7852,35.2112" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+97225333442">☎ 02-5333442</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-1" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div>
       <div class="dine-card ">
         <div class="dine-when">יום ד׳ · ערב</div>
@@ -1350,6 +1477,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7646,35.2205" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+97225805888">☎ 02-5805888</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-2" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div>
       <div class="dine-card ">
         <div class="dine-when">יום ד׳ · חלופה</div>
@@ -1360,6 +1491,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7643,35.2206" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+97226251111">☎ 02-6251111</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-3" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div>
       <div class="dine-card star">
         <div class="dine-when">יום ה׳ · ערב</div>
@@ -1370,6 +1505,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7799,35.2144" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+97226222283">☎ 02-6222283</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-4" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div>
       <div class="dine-card ">
         <div class="dine-when">בכל ערב</div>
@@ -1380,6 +1519,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7771,35.2197" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+97223971651">☎ 02-3971651</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-5" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div>
       <div class="dine-card ">
         <div class="dine-when">יום ה׳ · צהריים</div>
@@ -1390,6 +1533,10 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7669,35.1624" target="_blank" rel="noopener">מפות</a>
           <a class="btn" href="tel:+972539424673">☎ 053-9424673</a>
         </div>
+        <details class="note">
+          <summary class="note-sum">✎ ההערות שלנו</summary>
+          <textarea class="note-ta" data-note="dine-6" placeholder="הזמנו? מה אכלנו? שווה לחזור?"></textarea>
+        </details>
       </div></div>
     </section>
     
@@ -1562,6 +1709,8 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         </div>
       </div>
       <p class="notes-hint">נשמר אוטומטית במכשיר הזה. לא נשלח לשום מקום.</p>
+      <div class="park-tier">כל ההערות מהמקומות</div>
+      <div class="roll" id="noteRoll"><div class="roll-empty">עוד לא כתבתם הערות. כל מקום בטיול מכיל שדה הערות משלו.</div></div>
     </section>
     
     <section class="panel" id="panel-prep">
@@ -1589,7 +1738,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
   <footer>
     <div class="sig">נסיעה טובה, אבידן ואתי.</div>
     <div class="tally-line">עצירות שסימנתם: <span class="tally-num"></span> מתוך 26</div>
-    <div class="ver">גרסה 4 · עודכן 1.8.2026 · פנקס, דירוג ביטחוני, טלפונים והזמנות</div>
+    <div class="ver">גרסה 5 · עודכן 1.8.2026 · הערות אישיות בכל מקום</div>
     <div style="margin-top:6px">שעות פתיחה משתנות — כדאי לאמת ביום עצמו. מסלולים בזמן אמת: Moovit.</div>
   </footer>
 </div>
@@ -1642,6 +1791,64 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
     if (lab) lab.className = "tab today";
     if (!saved || !saved.t) { el = document.getElementById("t-" + id); if (el) el.checked = true; }
   }
+
+  /* ---------- a private note on every place ---------- */
+  var PK = "avidan-eti-place-notes-v1";
+  var notes = {};
+  if (store) { try { notes = JSON.parse(store.getItem(PK)) || {}; } catch (e) { notes = {}; } }
+
+  var pads = document.querySelectorAll(".note-ta");
+
+  function titleOf(pad) {
+    var card = pad.closest(".stop") || pad.closest(".dine-card");
+    if (!card) return "";
+    var t = card.querySelector(".c-title") || card.querySelector(".dine-name");
+    return t ? t.textContent.trim() : "";
+  }
+
+  function flag(pad) {
+    var box = pad.closest(".note");
+    if (box) box.className = pad.value.trim() ? "note has-note" : "note";
+  }
+
+  function roll() {
+    var host = document.getElementById("noteRoll");
+    if (!host) return;
+    var html = "", n = 0;
+    for (var k = 0; k < pads.length; k++) {
+      var v = pads[k].value.trim();
+      if (!v) continue;
+      n++;
+      var t = document.createElement("div");
+      t.textContent = titleOf(pads[k]);
+      var b = document.createElement("div");
+      b.textContent = v;
+      html += '<div class="roll-item"><div class="roll-t">' + t.innerHTML +
+              '</div><div class="roll-x">' + b.innerHTML + "</div></div>";
+    }
+    host.innerHTML = n ? html :
+      '<div class="roll-empty">\u05e2\u05d5\u05d3 \u05dc\u05d0 \u05db\u05ea\u05d1\u05ea\u05dd \u05d4\u05e2\u05e8\u05d5\u05ea. \u05db\u05dc \u05de\u05e7\u05d5\u05dd \u05d1\u05d8\u05d9\u05d5\u05dc \u05de\u05db\u05d9\u05dc \u05e9\u05d3\u05d4 \u05d4\u05e2\u05e8\u05d5\u05ea \u05de\u05e9\u05dc\u05d5.</div>';
+  }
+
+  var pt;
+  for (var q = 0; q < pads.length; q++) {
+    (function (pad) {
+      var key = pad.getAttribute("data-note");
+      if (notes[key]) pad.value = notes[key];
+      flag(pad);
+      pad.addEventListener("input", function () {
+        notes[key] = pad.value;
+        if (!pad.value.trim()) delete notes[key];
+        flag(pad);
+        clearTimeout(pt);
+        pt = setTimeout(function () {
+          if (store) { try { store.setItem(PK, JSON.stringify(notes)); } catch (e) {} }
+          roll();
+        }, 400);
+      });
+    })(pads[q]);
+  }
+  roll();
 
   /* ---------- notepad: typing ---------- */
   var ta = document.getElementById("notesText");
@@ -1771,8 +1978,14 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
 
 <script>
 if (location.protocol === "https:" && "serviceWorker" in navigator) {
+  var reloaded = false;
+  navigator.serviceWorker.addEventListener("controllerchange", function () {
+    if (reloaded) return; reloaded = true; location.reload();
+  });
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").then(function (r) { r.update(); }).catch(function () {});
+    navigator.serviceWorker.register("sw.js")
+      .then(function (reg) { reg.update(); setInterval(function () { reg.update(); }, 3600000); })
+      .catch(function () {});
   });
 }
 </script>
