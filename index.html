@@ -124,6 +124,18 @@ header{padding:20px 0 0}
 .fact{display:flex; gap:9px; font-size:14.5px; align-items:flex-start}
 .fact .k{flex:0 0 auto; font-weight:700; color:var(--cobalt-deep); min-width:62px}
 .fact .v{color:var(--ink-soft)}
+.safety{border-radius:11px; padding:10px 13px; margin:0 0 13px; border:1px solid}
+.sf-hi{background:rgba(46,143,150,.07); border-color:rgba(46,143,150,.28)}
+.sf-mid{background:rgba(214,150,40,.09); border-color:rgba(190,130,30,.32)}
+.sf-lo{background:rgba(174,47,48,.07); border-color:rgba(174,47,48,.28)}
+.sf-top{display:flex; align-items:center; gap:9px; flex-wrap:wrap}
+.sf-stars{letter-spacing:2px; font-size:14px}
+.sf-hi .sf-stars .on{color:var(--turq)} .sf-mid .sf-stars .on{color:#B5811E} .sf-lo .sf-stars .on{color:var(--pomegranate)}
+.sf-stars .off{color:rgba(28,76,140,.20)}
+.sf-lab{font-size:12.5px; font-weight:700}
+.sf-hi .sf-lab{color:#1d6b71} .sf-mid .sf-lab{color:#8A5F10} .sf-lo .sf-lab{color:var(--pomegranate)}
+.sf-note{margin:6px 0 0; font-size:14.3px; line-height:1.55; color:var(--ink-soft)}
+.btn.book{background:var(--pomegranate); border-color:var(--pomegranate); color:#fff}
 .story{margin:0 0 13px; border:1px solid var(--line); border-radius:11px;
   background:linear-gradient(180deg,#fbfaf6,#fff); overflow:hidden}
 .story-sum{padding:9px 13px; cursor:pointer; list-style:none; font-size:13.5px; font-weight:700;
@@ -223,6 +235,31 @@ header{padding:20px 0 0}
 .opt-plus{background:rgba(46,143,150,.13); color:#1d6b71}
 .opt-minus{background:rgba(174,47,48,.10); color:var(--pomegranate)}
 
+/* notes */
+#panel-notes{display:none}
+.notes-bar{display:flex; align-items:center; gap:8px; margin:14px 0 10px; flex-wrap:wrap}
+.btn.back{background:var(--cobalt); border-color:var(--cobalt); color:#fff}
+.btn.danger{background:#fff; border-color:rgba(174,47,48,.35); color:var(--pomegranate)}
+.seg.small{flex:1 1 auto; min-width:170px}
+.seg.small label{padding:8px 6px; font-size:13.5px}
+#n-type:checked ~ .app label[for="n-type"], #n-draw:checked ~ .app label[for="n-draw"]{background:var(--cobalt); color:#fff}
+.notes-stage{position:relative; height:calc(100vh - 230px); min-height:340px;
+  border:1px solid var(--line); border-radius:var(--r); background:#fff; box-shadow:var(--shadow); overflow:hidden}
+.notes-text{width:100%; height:100%; border:0; resize:none; padding:16px; font-size:16.5px;
+  line-height:1.75; font-family:'Assistant',sans-serif; color:var(--ink); background:transparent; outline:none}
+.notes-text::placeholder{color:#9AA5B4}
+.notes-draw{display:none; position:absolute; inset:0}
+#n-draw:checked ~ .app .notes-text{display:none}
+#n-draw:checked ~ .app .notes-draw{display:block}
+#notesCanvas{width:100%; height:100%; display:block; touch-action:none;
+  background:repeating-linear-gradient(#fff,#fff 33px,rgba(28,76,140,.09) 34px)}
+.draw-tools{position:absolute; inset-inline-start:12px; bottom:12px; display:flex; gap:7px; align-items:center}
+.pen{width:26px; height:26px; border-radius:50%; border:2px solid #fff; cursor:pointer;
+  box-shadow:0 1px 6px rgba(0,0,0,.28)}
+.pen[data-pen="#123566"]{background:#123566} .pen[data-pen="#AE2F30"]{background:#AE2F30} .pen[data-pen="#2E8F96"]{background:#2E8F96}
+.pen[aria-pressed="true"]{outline:2px solid var(--turq); outline-offset:2px}
+.btn.tiny{padding:5px 11px; font-size:12.5px}
+.notes-hint{font-size:12.8px; color:var(--ink-soft); text-align:center; margin:9px 0 0}
 footer{text-align:center; padding:28px 16px 40px; color:var(--ink-soft); font-size:13.5px}
 footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:var(--cobalt-deep)}
 .tally-line{margin-top:8px; font-weight:600; color:var(--cobalt-deep)}
@@ -251,6 +288,9 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
 #t-park:checked ~ .app label[for="t-park"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 #t-park:checked ~ .app label[for="t-park"] small{opacity:.85}
 #t-park:checked ~ .app #panel-park{display:block}
+#t-notes:checked ~ .app label[for="t-notes"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+#t-notes:checked ~ .app label[for="t-notes"] small{opacity:.85}
+#t-notes:checked ~ .app #panel-notes{display:block}
 #t-prep:checked ~ .app label[for="t-prep"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 #t-prep:checked ~ .app label[for="t-prep"] small{opacity:.85}
 #t-prep:checked ~ .app #panel-prep{display:block}
@@ -280,7 +320,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
   <circle cx="0" cy="11" r="1.6" fill="#AE2F30"/><circle cx="26" cy="11" r="1.6" fill="#AE2F30"/>
 </pattern></defs></svg>
 
-<input class="sr" type="radio" name="mode" id="m-transit" checked><input class="sr" type="radio" name="mode" id="m-car"><input class="sr" type="radio" name="tab" id="t-d1" checked><input class="sr" type="radio" name="tab" id="t-d2"><input class="sr" type="radio" name="tab" id="t-d3"><input class="sr" type="radio" name="tab" id="t-d4"><input class="sr" type="radio" name="tab" id="t-info"><input class="sr" type="radio" name="tab" id="t-park"><input class="sr" type="radio" name="tab" id="t-prep"><input class="sr" type="radio" name="filter" id="f-all" checked><input class="sr" type="radio" name="filter" id="f-hidden"><input class="sr" type="radio" name="filter" id="f-romance"><input class="sr" type="radio" name="filter" id="f-food">
+<input class="sr" type="radio" name="mode" id="m-transit" checked><input class="sr" type="radio" name="mode" id="m-car"><input class="sr" type="radio" name="tab" id="t-d1" checked><input class="sr" type="radio" name="tab" id="t-d2"><input class="sr" type="radio" name="tab" id="t-d3"><input class="sr" type="radio" name="tab" id="t-d4"><input class="sr" type="radio" name="tab" id="t-info"><input class="sr" type="radio" name="tab" id="t-park"><input class="sr" type="radio" name="tab" id="t-notes"><input class="sr" type="radio" name="tab" id="t-prep"><input class="sr" type="radio" name="nmode" id="n-type" checked><input class="sr" type="radio" name="nmode" id="n-draw"><input class="sr" type="radio" name="filter" id="f-all" checked><input class="sr" type="radio" name="filter" id="f-hidden"><input class="sr" type="radio" name="filter" id="f-romance"><input class="sr" type="radio" name="filter" id="f-food">
 
 <div class="app">
   <header>
@@ -314,7 +354,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
     </div>
   </header>
 
-  <nav class="tabs"><div class="tabs-in"><label class="tab" for="t-d1" id="lab-t-d1">יום ג׳ <small>4.8</small></label><label class="tab" for="t-d2" id="lab-t-d2">יום ד׳ <small>5.8</small></label><label class="tab" for="t-d3" id="lab-t-d3">יום ה׳ <small>6.8</small></label><label class="tab" for="t-d4" id="lab-t-d4">יום ו׳ <small>7.8</small></label><label class="tab" for="t-info" id="lab-t-info">הערבים שלנו</label><label class="tab" for="t-park" id="lab-t-park">חניה ופנגו</label><label class="tab" for="t-prep" id="lab-t-prep">להתכונן</label></div></nav>
+  <nav class="tabs"><div class="tabs-in"><label class="tab" for="t-d1" id="lab-t-d1">יום ג׳ <small>4.8</small></label><label class="tab" for="t-d2" id="lab-t-d2">יום ד׳ <small>5.8</small></label><label class="tab" for="t-d3" id="lab-t-d3">יום ה׳ <small>6.8</small></label><label class="tab" for="t-d4" id="lab-t-d4">יום ו׳ <small>7.8</small></label><label class="tab" for="t-info" id="lab-t-info">הערבים שלנו</label><label class="tab" for="t-park" id="lab-t-park">חניה ופנגו</label><label class="tab" for="t-notes" id="lab-t-notes">פנקס</label><label class="tab" for="t-prep" id="lab-t-prep">להתכונן</label></div></nav>
 
   <main class="wrap">
     <div class="filters"><label class="chip" for="f-all">הכול</label><label class="chip" for="f-hidden">רק נסתרים</label><label class="chip" for="f-romance">רגעים לשניים</label><label class="chip" for="f-food">אוכל</label></div>
@@ -323,7 +363,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
       <div class="day-head">
         <div class="day-kicker">יום ההגעה</div>
         <h2 class="day-title">העיר העתיקה — מלמעלה ומלמטה</h2>
-        <p class="day-note">מגיעים בבוקר, אבל החדר רק ב־15:00. אז משאירים מזוודות בקבלה, עושים את העיר העתיקה בבוקר, נכנסים לחדר בשעה הכי חמה, ויוצאים שוב כשהאור מתרכך.</p>
+        <p class="day-note">מגיעים ב־10:00, אבל החדר רק ב־15:00. משאירים מזוודות בקבלה ויוצאים ישר לעיר העתיקה. החומות והמערה לפני הסגירה, צ׳ק־אין ומנוחה בשעה החמה, ויציאה שנייה כשהאור מתרכך.</p>
       </div>
       <ul class="timeline">
       <li class="stop k-famous">
@@ -331,7 +371,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">08:30</span>
+            <span class="c-time">10:00</span>
             <span class="c-main">
               <span class="c-title">הגעה לירושלים ופריקת מזוודות</span>
               <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
@@ -341,6 +381,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">עוצרים מול המלון, פורקים מזוודות ומשאירים אותן בקבלה. שמירת מזוודות לפני צ׳ק־אין היא שירות סטנדרטי ולא עולה כלום — פשוט בקשו.</p>
             
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">מרכז העיר, רחוב ראשי, תנועה ערה בכל שעה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רכבת לתחנת יצחק נבון, ואז קו 1 עד כיכר ציון · 7 דק׳ הליכה למלון</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">כניסה לעיר בשדרות בגין ← המלך ג׳ורג׳. עצירת פריקה קצרה מול המלון, הרב אבידע 1.</span></div>
@@ -353,6 +394,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7764,35.2177" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7764,35.2177&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              <a class="btn" href="tel:026298666">☎ 02-6298666</a>
               <label class="btn check" for="c-d1-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -363,7 +405,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">08:50</span>
+            <span class="c-time">10:20</span>
             <span class="c-main">
               <span class="c-title">החניית הרכב לכל השהות</span>
               <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
@@ -373,6 +415,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">מחנים פעם אחת ולא נוגעים ברכב עד יום שישי. פרטי החניונים — בלשונית ״רכב וחניה״.</p>
             
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">חניונים מאובטחים עם מצלמות ושומר.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">—</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון היכל שלמה (200 מ׳) או חניון מגדל ירושלים (450 מ׳, פתוח עד מאוחר). חניון המלון הוא היקר אבל הפשוט מכולם.</span></div>
@@ -385,6 +428,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7796,35.2180" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7796,35.2180&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              
               <label class="btn check" for="c-d1-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -395,7 +439,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">09:15</span>
+            <span class="c-time">10:45</span>
             <span class="c-main">
               <span class="c-title">הליכה דרך ממילא לשער יפו</span>
               <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
@@ -405,6 +449,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">דרך גן העצמאות ומתחם ממילא. 15 דקות, כמעט הכל בירידה. הכניסה לעיר העתיקה מלמעלה עושה משהו שנסיעה לא עושה.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">עד 1967 הרחוב הזה היה קו הגבול. ממילא הייתה שכונה מסחרית משגשגת בתקופה העות׳מאנית, ואחרי מלחמת העצמאות היא הפכה לשטח הפקר בין ישראל לירדן — בתים מנוקבי כדורים, גדרות תיל, וצלפים על החומה ממול. בשנות ה־80 תוכננה מחדש בידי משה ספדיה, וכ־70 מבנים היסטוריים פורקו אבן־אבן, כל אבן מוספרה, והורכבו מחדש במקומם. הבתים שאתם עוברים לידם הם אותם בתים, רק שהם זזו כמה עשרות מטרים.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">מתחם מסחרי סגור עם אבטחה בכניסות, מצלמות וקהל רב עד שעה מאוחרת. אין כאן שום שיקול ביטחוני.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל · 15 דק׳</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">רגל. אל תיסעו — אין חניה בשער יפו מלבד קרתא, ואתם ממילא במרחק הליכה.</span></div>
@@ -417,6 +462,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7767,35.2277" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7767,35.2277&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              
               <label class="btn check" for="c-d1-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -427,7 +473,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">09:30</span>
+            <span class="c-time">11:00</span>
             <span class="c-main">
               <span class="c-title">מוזיאון מגדל דוד</span>
               <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
@@ -437,18 +483,20 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">אחרי השיפוץ הענק זה מוזיאון ברמה עולמית — כל שכבה בהיסטוריה של העיר, בתוך המצודה עצמה. שעה ושלושת רבעי.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">המצודה הזו הגנה על ירושלים אלפיים שנה, וכל שליט הוסיף לה שכבה. הורדוס בנה כאן שלושה מגדלים ענקיים — מגדל פצאל, שנקרא על שם אחיו, עומד עד היום. הצלבנים בנו ארמון מלך וחפיר יבש, הממלוכים עיבו את הקירות, והעות׳מאנים הוסיפו את הצריח המחודד שכולם מכירים כ״מגדל דוד״. וזו טעות מפורסמת: הצריח הוא מינרט של מסגד מ־1655, ואין לו שום קשר לדוד המלך. השם דבק בגלל פירוש נוצרי מוטעה של כתבי יוסף בן מתתיהו. המוזיאון נפתח ב־1989, ובשנת 2023 נחשף מחדש אחרי שיפוץ ענק — עשר גלריות עם מיצגים אינטראקטיביים.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">אתר מאובטח עם בידוק בכניסה. רחבת שער יפו היא הפינה השקטה והשמורה ביותר בעיר העתיקה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">בשער יפו</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון קרתא, 3 דק׳ הליכה · כ־70 ₪ ליום</span></div>
               <div class="fact"><span class="k">קווים</span><span class="v">רכבת קלה: תחנת כיכר ספרא (עיריית ירושלים), 5 דק׳ הליכה. אוטובוסים: קווים 13, 18 ו־38 ברחוב המלך דוד; קו 38 (מעגלי מהרובע היהודי) עוצר ברחוב יצחק קריב.</span></div>
               <div class="fact"><span class="k">מחיר</span><span class="v">מבוגר 55 ₪ · אזרח ותיק 28 ₪ · סטודנט 44 ₪. מופע לילה 69 ₪, כרטיס משולב 108 ₪. ביקור חוזר 20 ₪ בלבד.</span></div>
               <div class="fact"><span class="k">שעות</span><span class="v">ביום שלישי 9:00–20:00 (הכי מאוחר בשבוע)</span></div>
-              <div class="fact"><span class="k">טיפ</span><span class="v">סיימו בתצפית הגג. משם רואים איך העיר בנויה שכבה על שכבה.</span></div>
+              <div class="fact"><span class="k">טיפ</span><span class="v">סיימו בתצפית מגדל פצאל. שאלו בקבלת המלון על ברושור ההנחה — ללנים במלונות ירושלים יש 15% הנחה בקופות.</span></div>
             </div>
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7763,35.2284" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7763,35.2284&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
-              <a class="btn" href="https://www.tod.org.il/" target="_blank" rel="noopener">אתר והזמנה</a>
+              <a class="btn book" href="https://www.tod.org.il/event/entrance-to-the-tower-of-david/" target="_blank" rel="noopener">הזמנת כרטיסים</a>
+              <a class="btn" href="tel:026265333">☎ 02-6265333</a><a class="btn" href="tel:2884">☎ *2884</a>
               <label class="btn check" for="c-d1-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -459,7 +507,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">11:30</span>
+            <span class="c-time">13:00</span>
             <span class="c-main">
               <span class="c-title">טיילת החומות · המסלול הצפוני</span>
               <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
@@ -469,6 +517,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">הליכה על גבי חומות סולימאן משער יפו צפונה, מעל גגות הרובע המוסלמי. רוב התיירים לא יודעים שזה קיים. יורדים בשער שכם.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">החומות נבנו בין 1537 ל־1541 בפקודת הסולטאן סולימאן המפואר — ארבעה קילומטרים, 34 מגדלים ושמונה שערים, סביב אלף דונם בלבד. אגדה עות׳מאנית מספרת שסולימאן הוציא להורג את שני האדריכלים כשגילה שהשאירו את הר ציון מחוץ לחומה. הטיילת נפתחה לציבור בשנות ה־70, ובשיפוץ האחרון הוצבו עליה עשרה פסלים בגודל טבעי של מגיני ירושלים לדורותיהם, עם אפליקציית מציאות רבודה שמעירה אותם לחיים. חידוש חשוב: אפשר לרדת מהחומה ולעלות שוב באותו יום, מחמישה שערים שונים, בסריקת הברקוד שעל הכרטיס.</p></details>
+            <div class="safety sf-mid"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span><span class="off">☆</span></span><span class="sf-lab">דורש תשומת לב</span></div><p class="sf-note">הטיילת עצמה סגורה ומגודרת, אבל היא עוברת מעל גגות הרובע המוסלמי ויש בה קטעים מבודדים בלי אנשים. לכו בשעות היום, לא לבד, ורדו לפני רדת החשכה. אל תרדו משערים שאתם לא מכירים.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קופה משמאל לשער יפו · כ־25 ₪</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">אותו חניון קרתא — אתם יוצאים בצד השני של העיר העתיקה וחוזרים ברגל.</span></div>
@@ -480,7 +529,8 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7766,35.2276" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7766,35.2276&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
-              
+              <a class="btn book" href="https://www.pami.co.il/he/" target="_blank" rel="noopener">הזמנת כרטיסים</a>
+              <a class="btn" href="tel:026277550">☎ 02-6277550</a>
               <label class="btn check" for="c-d1-4"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -494,44 +544,12 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="moment-d">יש פינה בטיילת שממנה רואים את כיפת הסלע במלואה. עצרו שם. כל אחד אומר דבר אחד שהוא אסיר תודה עליו מהשנה האחרונה. זה לוקח שתי דקות ונשאר שנים.</div>
         </div>
       </li>
-      <li class="stop k-hidden">
+      <li class="stop k-hidden k-food">
         <input class="sr" type="checkbox" id="c-d1-5">
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">12:50</span>
-            <span class="c-main">
-              <span class="c-title">מערת צדקיהו</span>
-              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
-            </span>
-            <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <div class="c-body">
-            <p class="c-desc">מחצבה תת־קרקעית ענקית שמשתרעת חמישה רחובות מתחת לרובע המוסלמי — אולמות עמודים, כתובות עתיקות ומעיין קטן.</p>
-            <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">מחצבה תת־קרקעית של 9,000 מ״ר שנחפרה במשך אלפי שנים ומשתרעת כ־200 מטר מתחת לרובע המוסלמי. מכאן, ככל הנראה, נחצבו אבני הבנייה של הר הבית ההרודיאני. המערה נשכחה לחלוטין מאות שנים, עד שב־1854 הכלב של הרופא האמריקאי ג׳יימס בַּרְקְלִי נעלם לתוך חור בקיר החומה — וכך היא נתגלתה מחדש. שמה בא מהאגדה שצדקיהו, מלך יהודה האחרון, נמלט דרכה מהבבלים לכיוון יריחו. הבונים החופשיים רואים בה אתר מקודש ומקיימים בה טקס שנתי. ב־2023, אחרי שלוש שנים ו־30 מיליון ₪, היא נפתחה מחדש עם חיזיון אור־קולי אימרסיבי שמוקרן על קירות המערה.</p></details>
-            <div class="facts">
-              <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">ליד שער שכם · רגל 3 דק׳ מיציאת הטיילת</span></div>
-              <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניה בשער שכם כמעט בלתי אפשרית. הגיעו ברגל.</span></div>
-              <div class="fact"><span class="k">קווים</span><span class="v">רכבת קלה: תחנת שער שכם או כיכר ספרא, ומשם הליכה קצרה. אוטובוסים רבים עוצרים ברחבת שער שכם. חניונים באזור: קרתא, ספרא, שער שכם.</span></div>
-              <div class="fact"><span class="k">מחיר</span><span class="v">כולל החיזיון: מבוגר 35 ₪ · ילד, חייל, סטודנט וגמלאי 25 ₪. באוגוסט האתר נוטה להיות פתוח ברצף עד 21:00 בימים א׳–ה׳ — שווה לבדוק, זה פותח אפשרות לביקור ערב.</span></div>
-              <div class="fact"><span class="k">שעות</span><span class="v">א׳–ו׳ 9:00–17:00 · סגור בשבת</span></div>
-              <div class="fact"><span class="k">טיפ</span><span class="v">בפנים כ־20 מעלות. תזמנו את זה לשעה הכי חמה של היום — זה בדיוק מה שעשינו כאן.</span></div>
-            </div>
-            <div class="actions">
-              <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7829,35.2314" target="_blank" rel="noopener">פתיחה במפות</a>
-              <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7829,35.2314&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
-              
-              <label class="btn check" for="c-d1-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
-            </div>
-          </div>
-        </details>
-      </li>
-      <li class="stop k-hidden k-food">
-        <input class="sr" type="checkbox" id="c-d1-6">
-        <span class="dot" aria-hidden="true"></span>
-        <details class="card">
-          <summary class="c-top">
-            <span class="c-time">14:00</span>
+            <span class="c-time">14:20</span>
             <span class="c-main">
               <span class="c-title">צהריים בהוספיס האוסטרי</span>
               <span class="c-tags"><span class="tag t-hidden">נסתר</span><span class="tag t-food">אוכל</span></span>
@@ -541,6 +559,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">מנזר־אכסניה אוסטרי מ־1863 בלב הרובע המוסלמי. גולאש, שניצל ושטרודל תפוחים עם קפה וינאי, וגג תצפית פתוח למבקרים.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">הבית הזה נחנך ב־1863 והיה האכסניה הלאומית הראשונה לעולי רגל בארץ הקודש — פרויקט של הקיסרות האוסטרו־הונגרית, שרצתה נוכחות בירושלים בדיוק כמו הרוסים והגרמנים. במלחמת העולם הראשונה הוא שימש בית חולים צבאי טורקי, ואחרי 1948 הפך לבית חולים ירדני. רק ב־1988 הוא חזר לתפקידו המקורי. הוא עומד בדיוק בפינה שבין ויה דולורוזה לרחוב הגיא — הצומת ההומה ביותר ברובע המוסלמי — ומאחורי השער שלו יש דממה מוחלטת, חצר עם עצים, וגג שממנו רואים את כיפת הסלע מקרוב.</p></details>
+            <div class="safety sf-mid"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span><span class="off">☆</span></span><span class="sf-lab">דורש תשומת לב</span></div><p class="sf-note">הבניין עצמו מוסד אוסטרי מאובטח עם שער ושומר. הדרך אליו עוברת בלב הרובע המוסלמי — היצמדו לרחוב הראשי (ויה דולורוזה / רחוב הגיא), אל תיכנסו לסמטאות צדדיות, ולכו בשעות היום.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">ויה דולורוזה 37 · 6 דק׳ רגל משער שכם</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">רגל בלבד — אין גישת רכב לרובע המוסלמי.</span></div>
@@ -553,6 +572,41 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7803,35.2321" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7803,35.2321&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              <a class="btn" href="tel:026265800">☎ 02-6265800</a>
+              <label class="btn check" for="c-d1-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
+            </div>
+          </div>
+        </details>
+      </li>
+      <li class="stop k-hidden">
+        <input class="sr" type="checkbox" id="c-d1-6">
+        <span class="dot" aria-hidden="true"></span>
+        <details class="card">
+          <summary class="c-top">
+            <span class="c-time">15:30</span>
+            <span class="c-main">
+              <span class="c-title">מערת צדקיהו</span>
+              <span class="c-tags"><span class="tag t-hidden">נסתר</span></span>
+            </span>
+            <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary>
+          <div class="c-body">
+            <p class="c-desc">מחצבה תת־קרקעית ענקית שמשתרעת חמישה רחובות מתחת לרובע המוסלמי — אולמות עמודים, כתובות עתיקות ומעיין קטן.</p>
+            <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">מחצבה תת־קרקעית של 9,000 מ״ר שנחפרה במשך אלפי שנים ומשתרעת כ־200 מטר מתחת לרובע המוסלמי. מכאן, ככל הנראה, נחצבו אבני הבנייה של הר הבית ההרודיאני. המערה נשכחה לחלוטין מאות שנים, עד שב־1854 הכלב של הרופא האמריקאי ג׳יימס בַּרְקְלִי נעלם לתוך חור בקיר החומה — וכך היא נתגלתה מחדש. שמה בא מהאגדה שצדקיהו, מלך יהודה האחרון, נמלט דרכה מהבבלים לכיוון יריחו. הבונים החופשיים רואים בה אתר מקודש ומקיימים בה טקס שנתי. ב־2023, אחרי שלוש שנים ו־30 מיליון ₪, היא נפתחה מחדש עם חיזיון אור־קולי אימרסיבי שמוקרן על קירות המערה.</p></details>
+            <div class="safety sf-lo"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="off">☆</span><span class="off">☆</span><span class="off">☆</span></span><span class="sf-lab">רגישות מוגברת</span></div><p class="sf-note">האתר עצמו מגודר ומאובטח, אבל הוא צמוד לרחבת שער שכם — נקודת החיכוך הרגישה ביותר בעיר העתיקה, עם היסטוריה של אירועים. יש שם נוכחות משטרתית קבועה. הגיעו בשעות היום, ישר מהכיוון המערבי, ואל תתעכבו ברחבה. בדקו עדכונים ביום עצמו.</p></div>
+            <div class="facts">
+              <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">ליד שער שכם · רגל 3 דק׳ מיציאת הטיילת</span></div>
+              <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניה בשער שכם כמעט בלתי אפשרית. הגיעו ברגל.</span></div>
+              <div class="fact"><span class="k">קווים</span><span class="v">רכבת קלה: תחנת שער שכם או כיכר ספרא, ומשם הליכה קצרה. אוטובוסים רבים עוצרים ברחבת שער שכם. חניונים באזור: קרתא, ספרא, שער שכם.</span></div>
+              <div class="fact"><span class="k">מחיר</span><span class="v">כולל החיזיון: מבוגר 35 ₪ · ילד, חייל, סטודנט וגמלאי 25 ₪. באוגוסט האתר נוטה להיות פתוח ברצף עד 21:00 בימים א׳–ה׳ — שווה לבדוק, זה פותח אפשרות לביקור ערב.</span></div>
+              <div class="fact"><span class="k">שעות</span><span class="v">א׳–ו׳ 9:00–17:00 · סגור בשבת</span></div>
+              <div class="fact"><span class="k">טיפ</span><span class="v">הקופה נסגרת לפני האתר, אז אל תגיעו אחרי 16:00. בפנים כ־20 מעלות — זו ההצלה מהחום של אחר הצהריים.</span></div>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7829,35.2314" target="_blank" rel="noopener">פתיחה במפות</a>
+              <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7829,35.2314&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              <a class="btn book" href="https://www.pami.co.il/he/" target="_blank" rel="noopener">הזמנת כרטיסים</a>
+              <a class="btn" href="tel:026277550">☎ 02-6277550</a>
               <label class="btn check" for="c-d1-6"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -563,7 +617,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">15:20</span>
+            <span class="c-time">17:00</span>
             <span class="c-main">
               <span class="c-title">חזרה למלון · צ׳ק־אין ומנוחה</span>
               <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
@@ -572,6 +626,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           </summary>
           <div class="c-body">
             <p class="c-desc">חוזרים דרך שער יפו וממילא, נכנסים לחדר, מקלחת ושעה של שקט. זו השעה הכי חמה ביום — היא מיועדת לזה.</p>
+            
             
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל 20 דק׳ · או קו 1 מכיכר צה״ל לכיכר ציון</span></div>
@@ -585,6 +640,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7764,35.2177" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7764,35.2177&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              <a class="btn" href="tel:026298666">☎ 02-6298666</a>
               <label class="btn check" for="c-d1-7"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -595,7 +651,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <span class="dot" aria-hidden="true"></span>
         <details class="card">
           <summary class="c-top">
-            <span class="c-time">18:00</span>
+            <span class="c-time">18:45</span>
             <span class="c-main">
               <span class="c-title">הכותל בשעת בין ערביים</span>
               <span class="c-tags"><span class="tag t-famous">מתויר</span></span>
@@ -605,6 +661,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">יורדים לרחבה כשהאור מתרכך והאבן מוארת. שקט יותר מהבוקר, ויפה בהרבה.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">מה שאתם רואים הוא לא קיר של בית המקדש אלא קיר תמך — חלק מהחומה שבנה הורדוס סביב הר הבית כדי להרחיב את הרמה שעליה עמד המקדש. אורכו הכולל 488 מטר; הקטע החשוף ברחבה הוא 57 מטר בלבד. השורות התחתונות הן אבני ענק הרודיאניות, חלקן במשקל עשרות טונות; מעליהן שורות אומיות, ומעליהן בנייה עות׳מאנית. הכותל הפך למוקד תפילה מרכזי דווקא מהמאה ה־16, כשהעות׳מאנים הסדירו את הגישה אליו. עד 1967 עמדה מולו סמטה ברוחב ארבעה מטרים בלבד.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">הרחבה היא אחד המקומות המאובטחים בישראל: בידוק בכניסה, מצלמות ונוכחות משטרתית מסיבית 24 שעות. הגיעו דרך שער יפו או שער האשפות, לא דרך הרובע המוסלמי אחרי החשכה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קווים 1 / 3 לרחבת הכותל · או רגל דרך שער יפו</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">אפשר לחנות בחניון הכותל, אבל בשעה זו הוא מלא. עדיף אוטובוס.</span></div>
@@ -616,6 +673,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7767,35.2345" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7767,35.2345&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d1-8"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -637,6 +695,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">אחרי שהדוכנים נסגרים, התריסים מתקפלים ומתגלים 240 ציורי הקיר של סולומון סוזה. השוק הופך לרובע ברים.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">השוק קם בשנות ה־80 של המאה ה־19 כאוסף דוכנים מאולתרים בין שכונת מחנה יהודה — שנקראה על שם יהודה נבון — לרחוב יפו. הבריטים הסדירו אותו בשנות ה־20. ב־2015 יזם האמן הצעיר סולומון סוזה פרויקט שנראה אז מטורף: לצייר על כל תריס בשוק. התוצאה היא כ־240 פורטרטים — מתיאודור הרצל ועד אום כולתום, מאלברט איינשטיין ועד ילדה אתיופית אלמונית — שנראים רק אחרי שהדוכנים נסגרים. מאותה תקופה גם צמחה כאן סצנת ברים שהפכה את השוק למקום אחר לגמרי אחרי רדת החשכה.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span></span><span class="sf-lab">בטוח, שימו לב לחפצים</span></div><p class="sf-note">אזור בילוי ירושלמי מובהק, מלא אנשים עד מאוחר. השיקול היחיד הוא כייסים בצפיפות — ארנק בכיס קדמי, תיק סגור מלפנים.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רכבת קלה: כיכר ציון ← שוק מחנה יהודה (2 תחנות)</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון שוק מחנה יהודה באגריפס 88 פתוח 24 שעות — אבל זו נסיעה של 4 דקות ורכבת של 5. תשאירו את הרכב.</span></div>
@@ -648,6 +707,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7848,35.2126" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7848,35.2126&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d1-9"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -677,6 +737,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">40 דקות הליכה במים בגובה ברך־מותן, בחושך, בתעלה שנחצבה לפני 2,700 שנה. אחת החוויות החזקות בירושלים.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">כאן, על הגבעה הצרה שמדרום להר הבית, הייתה ירושלים המקורית — לא בעיר העתיקה של היום, אלא כאן, ליד מעיין הגיחון. חזקיהו מלך יהודה ידע ב־701 לפנה״ס שסנחריב האשורי בדרך, וידע שעיר בלי מים נופלת. הוא הורה לחפור נקבה שתעביר את מי הגיחון אל תוך החומות — 533 מטר בסלע, ושתי קבוצות חוצבים שהתחילו משני קצוות ונפגשו באמצע. איך הם כיוונו זה אל זה מתחת לאדמה, בלי מצפן, זו עדיין שאלה פתוחה. ב־1880 מצא נער ערבי בקיר הנקבה כתובת עברית עתיקה שמתארת את רגע המפגש בין החוצבים — ״כתובת השילוח״, היום במוזיאון באיסטנבול. הנקבה זורמת עד היום.</p></details>
+            <div class="safety sf-mid"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span><span class="off">☆</span></span><span class="sf-lab">דורש תשומת לב</span></div><p class="sf-note">הגן הלאומי עצמו מאובטח היטב ועובד בתיאום עם כוחות הביטחון. הוא יושב בתוך שכונת סילוואן, שהיא אזור רגיש — הגיעו באוטובוס או ברכב ישירות לשער האתר, אל תסתובבו בשכונה מסביב, ואל תגיעו לשם אחרי החשכה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קווים 1 / 3 לרחבת הכותל · 5 דק׳ רגל</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון עיר דוד קטן ומתמלא ב־8:30. עדיף קווים 1 / 3 לרחבת הכותל.</span></div>
@@ -688,7 +749,8 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7736,35.2350" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7736,35.2350&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
-              <a class="btn" href="https://cityofdavid.org.il/" target="_blank" rel="noopener">אתר והזמנה</a>
+              <a class="btn book" href="https://cityofdavid.org.il/" target="_blank" rel="noopener">הזמנת כרטיסים</a>
+              
               <label class="btn check" for="c-d2-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -717,6 +779,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">המדרגות המקוריות שעליהן עלו מבריכת השילוח אל בית המקדש, שנחשפו בחפירה ארוכה. עולים בהן ויוצאים מתחת לקשת רובינסון.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">רחוב מדורג ברוחב שמונה מטרים שהוביל מבריכת השילוח אל הר הבית — הדרך שבה עלו מאות אלפי עולי רגל בשלוש הרגלים בימי בית שני. הוא נסלל בימי פונטיוס פילטוס, סביב שנת 30 לספירה. החפירה החלה ב־2013 ונמשכה למעלה מעשור, כולה מתחת לבתי שכונת סילוואן, בשיטת מנהרות. מתחת לאבני הריצוף נמצאה תעלת ניקוז שבה, לפי יוסף בן מתתיהו, הסתתרו מורדים בזמן חורבן הבית — ובתוכה נמצאו סירי בישול ומטבעות מהשנה הרביעית למרד.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span></span><span class="sf-lab">בטוח, שימו לב לחפצים</span></div><p class="sf-note">כולה תת־קרקעית ובתוך האתר המאובטח. יוצאים ישירות לרחבת הכותל.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">המשך ישיר מהמנהרה</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">המשך ישיר מהמנהרה — אין מה לחנות.</span></div>
@@ -728,6 +791,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7745,35.2348" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7745,35.2348&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d2-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -749,6 +813,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">מנזר יווני־אורתודוקסי מבוצר מהמאה ה־11 בלב עמק המצלבה, עם פרסקאות מדהימות. המסורת אומרת שכאן גדל העץ לצליבה. שקט מוחלט.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">מנזר מבוצר שנראה כמו טירה קטנה, יושב לבדו בתוך עמק ירוק בלב העיר. הוא נבנה במאה ה־11 בידי נזירים גיאורגיים, על יסודות ביזנטיים מהמאה החמישית. המסורת שנתנה לו את שמו גורסת שכאן גדל העץ שממנו נעשה הצלב. במאה ה־12 חי כאן שוטא רוסתוולי, המשורר הלאומי של גיאורגיה שכתב את ״עוטה עור הנמר״ — ודמותו מצוירת עד היום באחד הפרסקאות. ב־1685, כשהקהילה הגיאורגית שקעה בחובות, נמכר המנזר ליוונים האורתודוקסים, ובידיהם הוא נמצא עד היום. הפרסקאות בכנסייה מהמאה ה־17, והשקט בפנים כמעט מוחלט.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">עמק פתוח בלב מערב ירושלים, סמוך למשכן הכנסת ולמוזיאון ישראל. שקט לחלוטין.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קווים 14 / 18 לרחביה, או רגל 25 דק׳ מהמלון</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניה חופשית ברחוב שוטא רוסתוולי, ובחניון מוזיאון ישראל 10 דק׳ הליכה.</span></div>
@@ -760,6 +825,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7721,35.2082" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7721,35.2082&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d2-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -781,6 +847,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">עשר דקות בעלייה מהמנזר. ביקור ממוקד: היכל הספר עם מגילות ים המלח, דגם ירושלים בימי בית שני, ואגף הארכיאולוגיה.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">המוזיאון נפתח ב־1965 והוא מוסד התרבות הגדול בישראל — כחצי מיליון פריטים בארבעה אגפים. שני הדברים שאסור לפספס נמצאים דווקא בחוץ: היכל הספר, שכיפתו הלבנה מעוצבת כמכסה הכד שבו נמצאו מגילות ים המלח ומולו קיר בזלת שחור — אור מול חושך, בני אור מול בני חושך; ולידו דגם ירושלים בימי בית שני, שנבנה ב־1966 בידי הארכיאולוג מיכאל אבי־יונה, במקור בחצר מלון הולילנד, והועבר לכאן ב־2006. הדגם משחזר את העיר בשנת 66 לספירה, השנה שבה פרץ המרד הגדול.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">מוסד לאומי עם בידוק בכניסה. אזור הקריה — הכנסת, בנק ישראל, בית המשפט העליון — מהמאובטחים בעיר.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל מהמנזר · או קווים 7 / 14 / 66</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון מסודר בכניסה למוזיאון, בתשלום, כמעט תמיד יש מקום.</span></div>
@@ -792,7 +859,8 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7721,35.2041" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7721,35.2041&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
-              <a class="btn" href="https://www.imj.org.il/" target="_blank" rel="noopener">אתר והזמנה</a>
+              <a class="btn book" href="https://www.imj.org.il/he/content/%D7%9E%D7%97%D7%99%D7%A8%D7%99-%D7%9B%D7%A8%D7%98%D7%99%D7%A1%D7%99%D7%9D" target="_blank" rel="noopener">הזמנת כרטיסים</a>
+              <a class="btn" href="tel:026708855">☎ 02-6708855</a>
               <label class="btn check" for="c-d2-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -813,6 +881,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">התצפית הכי יפה שיש על העיר העתיקה והר הבית. טיילת ארוכה עם שרידי האמה החשמונאית, ברושים, ושקט.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">הבניין הגדול שמעל הטיילת הוא ארמון הנציב — נבנה ב־1931 כמשכן הנציב העליון הבריטי, ומאז 1948 הוא מטה האו״ם. הרכס עצמו נקרא בערבית ״ג׳בל אל־מוכבר״, על שם המסורת שממנו ראה הח׳ליף עומר את ירושלים לראשונה וקרא ״אללה אכבר״. הטיילת תוכננה בשנות ה־80 בידי האדריכל האמריקאי לורנס הלפרין, וסלולה לאורך שרידי אמת המים החשמונאית שהובילה מים מבריכות שלמה אל המקדש. זו נקודת התצפית הטובה בעיר: העיר העתיקה, הר הבית, הר הזיתים והמדבר — הכל בפריים אחד.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span></span><span class="sf-lab">בטוח, שימו לב לחפצים</span></div><p class="sf-note">הטיילת עצמה פופולרית, מוארת ומלאה מבקרים בשעות השקיעה, וסמוכה למטה האו״ם. היא גובלת בשכונת ג׳בל מוכבר — הישארו בקטע המרכזי והמואר, אל תמשיכו לקצוות המבודדים, ואל תישארו אחרי שהקהל מתפזר.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קווים 78 / 78א / 12 · תחנת ארמון הנציב א׳</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">העצירה היחידה שנוחה יותר ברכב. חניה חופשית לאורך שדרות דניאל ינובסקי — בדרך כלל יש מקום.</span></div>
@@ -824,6 +893,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7545,35.2308" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7545,35.2308&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d2-4"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -845,6 +915,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">רחוב שלם של בתי טמפלרים מהמאה ה־19 שהפכו למסעדות ובתי קפה. קו 78 ממשיך לכאן מהטיילת.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">המושבה הגרמנית נוסדה ב־1873 בידי הטמפלרים — כת פרוטסטנטית מדרום גרמניה שהאמינה שהתיישבות בארץ הקודש תחיש את הגאולה. הם הביאו איתם חקלאות מודרנית, בתי מלאכה ותכנון עירוני גרמני, ובנו בתי אבן עם גגות רעפים אדומים וכתובות בגרמנית מעל המשקופים — חלקן קריאות עד היום. ב־1939 גורשו רובם בידי הבריטים כנתיני מדינת אויב. הרחוב שנשאר הוא אחד היפים בעיר.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">רחוב בילוי מרכזי במערב העיר, הומה עד חצות.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קו 78 מהטיילת · 12 דק׳</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון התחנה הראשונה בתשלום. בכחול־לבן אחרי 17:00 זה לבעלי תו אזורי בלבד — אל תסתכנו.</span></div>
@@ -856,6 +927,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7635,35.2194" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7635,35.2194&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d2-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -885,6 +957,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">הקו האדום מהתחנה שליד המלון עד סוף הקו בדרום־מערב. כ־30 דקות, מזוגן, ונוף של העיר בדרך.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">הקו האדום הוארך ב־2025 עד בית החולים הדסה עין כרם — 35 תחנות מנווה יעקב בצפון ועד כאן. הנסיעה עצמה שווה משהו: היא חוצה את העיר לרוחבה ומראה לכם את ירושלים שהתיירים לא רואים.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">הרכבת הקלה מאובטחת, עם מצלמות ומאבטחים על הקווים.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">כיכר ציון ← הדסה עין כרם · קו 1</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">ברכב: 20 דק׳ נסיעה לעין כרם. עדיף לחנות בחנה־וסע הר הרצל ולעלות על קו 1.</span></div>
@@ -896,6 +969,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7642,35.1523" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7642,35.1523&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d3-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -917,6 +991,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">מזרקה עות׳מאנית, מסגד נטוש מעליה, וסמטאות אבן שנראות כמו כפר גלילי שהתגלגל לירושלים.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">עין כרם הוא כפר ערבי־נוצרי היסטורי שנטוש מ־1948, ומאז התיישבו בו אמנים והפכו אותו לאחת הפינות היפות בירושלים. המסורת הנוצרית מזהה אותו כמקום הולדתו של יוחנן המטביל, וכמקום שאליו הגיעה מרים בהריונה לבקר את אלישבע קרובתה — המפגש שנקרא ״הביקור״. מעיין מרים, במרכז הכפר, הוא מעיין שממנו שתו שתיהן לפי המסורת; המבנה שמעליו עות׳מאני, והמסגד הנטוש שמעליו נבנה במאה ה־15. כנסיית הביקור שמעל הכפר תוכננה ב־1955 בידי אנטוניו ברלוצי, האדריכל שעיצב כמעט את כל הכנסיות הגדולות של ארץ הקודש.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">כפר תיירותי שקט במערב ירושלים, מלא מבקרים ישראלים ובתי קפה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל בכפר</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניה בכפר עצמו צרה וקשה. חנו בחניון הדסה עין כרם ורדו ברגל, או קו 28.</span></div>
@@ -928,6 +1003,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7653,35.1611" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7653,35.1611&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d3-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -949,6 +1025,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">גנים מטופחים במדרון, ברושים, ספסלי אבן ושקט כמעט מוחלט. מעט מאוד מבקרים מגיעים לכאן.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">נוסד ב־1860 בידי אלפונס רטיסבון — יהודי צרפתי מבנקאות אמידה שהתנצר בעקבות חוויה שעבר ברומא, ואחיו תיאודור הקים את מסדר ״נוטר דאם דה ציון״. המנזר יושב במדרון מעל הכפר, וסביבו גנים מדורגים עם ברושים, זיתים וספסלי אבן. הוא מתפקד היום גם כבית הארחה, וכמעט אין בו מבקרים — מה שהופך אותו לאחד המקומות השקטים ביותר בירושלים.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">מנזר פרטי עם שער. שקט מוחלט. השיקול היחיד הוא לבוש צנוע וכיבוד השקט.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל בכפר · 10 דק׳ במעלה</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">רגל מהכפר. אין חניה בקרבת המנזר.</span></div>
@@ -961,6 +1038,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7669,35.1607" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7669,35.1607&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              <a class="btn" href="tel:026415738">☎ 02-6415738</a>
               <label class="btn check" for="c-d3-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -989,6 +1067,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">כמה מסעדות טובות עם ישיבה בחוץ תחת גפנים, בבתי אבן ערביים משומרים.</p>
             
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">לב הכפר, אזור מסעדות ותיירות.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רחוב המעיין</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">רחוב המעיין — חניה מוגבלת מאוד בשעות הצהריים.</span></div>
@@ -1000,6 +1079,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7665,35.1620" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7665,35.1620&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d3-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -1021,18 +1101,20 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">הכניסה חינם. הקצו לפחות שלוש שעות, ואל תדלגו על אנדרטת הילדים.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">הוקם בחוק מ־1953 כרשות הזיכרון לשואה ולגבורה. מוזיאון ההיסטוריה הנוכחי נפתח ב־2005 ותוכנן בידי משה ספדיה: מנסרה משולשת באורך 180 מטר שחודרת דרך ההר, כמעט כולה מתחת לאדמה, ומסתיימת במרפסת פתוחה אל נוף הרי ירושלים — המסלול נבנה כך שאין דרך לחזור אחורה, ורק קדימה, אל האור. באתר גם היכל השמות עם דפי העד, אנדרטת הילדים — חלל חשוך שבו חמישה נרות משתקפים באינסוף מראות בעוד קול קורא בשמות של ילדים — ושדרת חסידי אומות העולם.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">אתר לאומי עם בידוק ביטחוני מלא בכניסה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רכבת קלה להר הרצל · 13 דק׳ רגל · או קווים 27 / 27א</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון מקורה באתר, בתשלום. מ־1.1.2026 אין תשלום במזומן — אשראי, פנגו או סלופארק בלבד.</span></div>
-              <div class="fact"><span class="k">קווים</span><span class="v">רכבת קלה: תחנת הר הרצל, ומשם כ־13 דקות הליכה. אוטובוסים 27, 27א, 20, 21 ו־33 עוצרים בתחנת ״יד ושם״, כ־10 דקות הליכה מהכניסה.</span></div>
+              <div class="fact"><span class="k">קווים</span><span class="v">רכבת קלה: תחנת הר הרצל, כ־13 דקות הליכה. אוטובוסים לתחנת הר הרצל: 10, 16, 20, 23, 24, 26, 26א, 27, 27א, 28, 28א, 29, 33, 35, 39, 150. קווים 33 ו־35 יוצאים מתחנת הרכבת במלחה.</span></div>
               <div class="fact"><span class="k">מחיר</span><span class="v">הכניסה חינם. ביום חמישי פתוח עד 19:00. אין כניסה לילדים מתחת לגיל 10. יש חניון בתשלום; מ־2026 ללא מזומן.</span></div>
-              <div class="fact"><span class="k">שעות</span><span class="v">ביום חמישי 9:00–19:00</span></div>
-              <div class="fact"><span class="k">טיפ</span><span class="v">צאו החוצה לתצפית בסוף המסלול. זה חלק מהתכנון האדריכלי, לא נספח.</span></div>
+              <div class="fact"><span class="k">שעות</span><span class="v">א׳ ו־ד׳ 9:00–16:00 · ג׳ 9:00–14:00 · ב׳ ו־ה׳ 9:00–19:00 · ו׳ 9:00–13:00 · שבת סגור</span></div>
+              <div class="fact"><span class="k">טיפ</span><span class="v">חובה להזמין מקום מראש באתר, גם ליחידים — בלי הזמנה נכנסים רק אם יש מקום פנוי. הכניסה למוזיאון לתולדות השואה מגיל 10 בלבד.</span></div>
             </div>
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7742,35.1753" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7742,35.1753&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
-              <a class="btn" href="https://www.yadvashem.org/" target="_blank" rel="noopener">אתר והזמנה</a>
+              <a class="btn book" href="https://www.yadvashem.org/he/visiting" target="_blank" rel="noopener">הזמנת כרטיסים</a>
+              
               <label class="btn check" for="c-d3-4"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -1053,6 +1135,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">תחנת הרכבת העות׳מאנית מ־1892, היום מתחם אוכל והופעות חוצות. אפשר להגיע בהליכה לאורך פארק המסילה.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">התחנה נחנכה ב־1892 כקצה מסילת יפו–ירושלים, הרכבת הראשונה במזרח התיכון העות׳מאני. הפרויקט היה של יזם ירושלמי בשם יוסף נבון, שנאלץ לנסוע לפריז כדי לגייס את הכסף. הרכבת פעלה 106 שנים ונסגרה ב־1998 כשהמסילה נשחקה. הבניין עמד נטוש 15 שנה, ונפתח מחדש ב־2013 כמתחם תרבות ואוכל. פסי הרכבת הישנים הפכו לפארק המסילה — שביל הליכה ואופניים באורך שבעה קילומטרים.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">מתחם משפחות מואר ומאובטח, פעיל עד מאוחר.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">קווים 7 / 8 / 30 · או רגל מעמק רפאים</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון בתשלום במקום, כניסה מדרך חברון. פתוח עד מאוחר.</span></div>
@@ -1064,6 +1147,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7638,35.2237" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7638,35.2237&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d3-5"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -1093,6 +1177,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">סבך של סמטאות וחצרות משותפות עם כשלושים בתי כנסת זעירים מקהילות שונות — כורדים, פרסים, חלבים — בטווח של כמה מאות מטרים.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">מה שנראה כמו שכונה אחת הוא בעצם צביר של כשלושים שכונות זעירות שנבנו בין 1875 ל־1920, כל אחת בידי קהילה אחרת — מזכרת משה, אוהל משה, בתי רנד, שכונת הכורדים, ועוד. כולן נבנו באותו עיקרון: חצר משותפת מוקפת בתים, שער אחד שננעל בלילה, בור מים במרכז, ובית כנסת קטן. התוצאה היא כשלושים בתי כנסת בטווח של כמה מאות מטרים — כורדיים, פרסיים, חלביים, בוכריים — כל אחד עם נוסח משלו. בשנות ה־70 השכונה כמעט נהרסה בתוכנית פינוי־בינוי; היום היא מהמבוקשות בעיר.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">שכונת מגורים ירושלמית ותיקה. סמטאות צרות אבל מיושבות. בבוקר — אין שום סיבה לדאגה.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל מהמלון · 10 דק׳ צפונה</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">אל תיכנסו ברכב. הסמטאות חד־סטריות, צרות, ואין בהן חניה.</span></div>
@@ -1104,6 +1189,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7848,35.2106" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7848,35.2106&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d4-0"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -1125,6 +1211,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">אותו שוק, אירוע אחר לגמרי מהערב הראשון. צפיפות, צעקות, קניות לשבת וניחוח שאי אפשר לתאר.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">אותו שוק, אירוע אחר לגמרי. בוקר שישי הוא שיא השבוע: כל ירושלים קונה לשבת בו־זמנית, המוכרים צועקים מחירים שיורדים ככל שמתקרבים לצהריים, ובשעה 14:00 מתחילה מכירת חיסול אמיתית של כל מה שלא יחזיק עד ראשון. ״כהן חמוצים״ ברחוב מחנה יהודה 8 הוא מוסד מהדור הישן — חמוצים בחביות, דגים מלוחים וקוגל ירושלמי. ״אזורא״ בעיני העיר מבשלת קובה, חמין ומרקים עיראקיים על פתיליות מאז שנות ה־50, ונסגרת כשנגמר האוכל.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">☆</span></span><span class="sf-lab">בטוח, שימו לב לחפצים</span></div><p class="sf-note">צפיפות שיא. השיקול הוא כייסים ולא יותר מזה — תיק מלפנים, ארנק בכיס קדמי.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל מנחלאות · 5 דק׳</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון שוק מחנה יהודה, אגריפס 88. בשישי בבוקר מלא כבר ב־9:00 — הגיעו מוקדם או ברגל.</span></div>
@@ -1136,6 +1223,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7848,35.2126" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7848,35.2126&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d4-1"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -1165,6 +1253,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">השכונה הראשונה שנבנתה מחוץ לחומות ב־1860. סמטאות אבן, בוגנוויליה, ומדרגות שיורדות לגיא בן הינום מול חומות העיר העתיקה.</p>
             <details class="story"><summary class="story-sum">קצת רקע על המקום</summary><p class="story-txt">ב־1857 בנה כאן משה מונטיפיורי טחנת רוח, כדי לתת ליהודי העיר העתיקה מקור פרנסה. שנתיים אחר כך קמה לידה משכנות שאננים — שורת בתים ארוכה שהייתה השכונה היהודית הראשונה מחוץ לחומות. הבעיה הייתה שאיש לא הסכים לישון שם: מחוץ לחומה שרר חוסר ביטחון, והמתיישבים חזרו כל לילה לעיר העתיקה. מונטיפיורי נאלץ לשלם להם כדי שילונו במקום. השכונה ימין משה נוספה ב־1892. עד 1967 זה היה קו הגבול עם ירדן, אזור מוכה צלפים ובתים נטושים; אחרי המלחמה הוא שופץ והפך לרובע אמנים יוקרתי. הסמטאות המדורגות, הבוגנוויליה והנוף אל החומה הם התמונה הכי מזוהה עם ירושלים.</p></details>
+            <div class="safety sf-hi"><div class="sf-top"><span class="sf-stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></span><span class="sf-lab">בטוח</span></div><p class="sf-note">שכונה שקטה ויוקרתית, מוארת ומטופחת.</p></div>
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רגל מהמלון · 10 דק׳</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">חניון קרתא בשער יפו, 8 דק׳ הליכה במורד.</span></div>
@@ -1176,6 +1265,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
             <div class="actions">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7717,35.2247" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7717,35.2247&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
+              
               
               <label class="btn check" for="c-d4-2"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
@@ -1197,6 +1287,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
           <div class="c-body">
             <p class="c-desc">איסוף מזוודות. אם אתם נוסעים ברכבת — תחנת יצחק נבון, קו 1 מכיכר ציון עד ״תחנה מרכזית״.</p>
             
+            
             <div class="facts">
               <div class="fact m-transit"><span class="k">בתחבורה</span><span class="v">רכבת קלה · 10 דק׳</span></div>
               <div class="fact m-car"><span class="k">ברכב</span><span class="v">איסוף הרכב מהחניון, יציאה בשדרות בגין דרומה לכביש 1. בשישי אחה״צ הכבישים מתפנים מוקדם.</span></div>
@@ -1209,6 +1300,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7764,35.2177" target="_blank" rel="noopener">פתיחה במפות</a>
               <a class="btn m-car" href="https://www.waze.com/ul?ll=31.7764,35.2177&navigate=yes" target="_blank" rel="noopener">ניווט בוויז</a>
               
+              <a class="btn" href="tel:026298666">☎ 02-6298666</a>
               <label class="btn check" for="c-d4-3"><span class="lbl-off">סימון שהיינו</span><span class="lbl-on">היינו כאן ✓</span></label>
             </div>
           </div>
@@ -1231,7 +1323,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">גג פתוח מול חומות העיר העתיקה מוארות. אין בירושלים שולחן רומנטי יותר מזה — מזמינים מקום ליד המעקה ומגיעים בשקיעה. אחרי זה יורדים לשוק לרבע שעה של רעש, וזה ניגוד מושלם.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7802,35.2258" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+97226279111">חיוג להזמנה</a>
+          <a class="btn" href="tel:+97226279111">☎ 02-6279111</a>
         </div>
       </div>
       <div class="dine-card ">
@@ -1241,7 +1333,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">רועש, חוגג, מוזיקה בווליום — לא ״רומנטי״ קלאסי אבל אחת מארוחות הערב הכי כיפיות בישראל. שבו על בר השף וראו הכול קורה מול הפנים.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7852,35.2112" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+97225333442">חיוג להזמנה</a>
+          <a class="btn" href="tel:+97225333442">☎ 02-5333442</a>
         </div>
       </div>
       <div class="dine-card ">
@@ -1251,7 +1343,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">מקום זעיר עם דירוג יוצא דופן ובשר ברמה גבוהה. אינטימי במובן הפשוט — עשרה שולחנות, שירות שמכיר אתכם בשם. אחרי השקיעה בטיילת זה הגודל הנכון.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7646,35.2205" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+97225805888">חיוג להזמנה</a>
+          <a class="btn" href="tel:+97225805888">☎ 02-5805888</a>
         </div>
       </div>
       <div class="dine-card ">
@@ -1261,7 +1353,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">ביסטרו צרפתי על הרחוב, שולחנות בחוץ מתחת לעצים. גדול יותר וקל יותר להשיג בו מקום ברגע האחרון.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7643,35.2206" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+97226251111">חיוג להזמנה</a>
+          <a class="btn" href="tel:+97226251111">☎ 02-6251111</a>
         </div>
       </div>
       <div class="dine-card star">
@@ -1271,7 +1363,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">הארוחה הגדולה של הטיול. מטבח צרפתי־ישראלי במרתפי אבן של בניין היסטורי, אור נרות, רשימת יינות רצינית. אחרי יום ביד ושם — ערב שמחזיר אתכם זה לזה. הזמינו מראש ובקשו שולחן פנימי.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7799,35.2144" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+97226222283">חיוג להזמנה</a>
+          <a class="btn" href="tel:+97226222283">☎ 02-6222283</a>
         </div>
       </div>
       <div class="dine-card ">
@@ -1281,7 +1373,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">בר־מסעדה יושב בתוך הפארק, ממש מתחת לחלון שלכם. מושלם לכוסית אחרונה כשחוזרים עייפים ולא רוצים להתאמץ.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7771,35.2197" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+97223971651">חיוג להזמנה</a>
+          <a class="btn" href="tel:+97223971651">☎ 02-3971651</a>
         </div>
       </div>
       <div class="dine-card ">
@@ -1291,7 +1383,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
         <p class="dine-why">חדרי אבן קמורים ושולחנות ברחוב הכפר. הצהריים הכי יפים בטיול, ובמחיר סביר.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=31.7669,35.1624" target="_blank" rel="noopener">מפות</a>
-          <a class="btn" href="tel:+972539424673">חיוג להזמנה</a>
+          <a class="btn" href="tel:+972539424673">☎ 053-9424673</a>
         </div>
       </div></div>
     </section>
@@ -1443,6 +1535,30 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
       </div>
     </section>
     
+    <section class="panel" id="panel-notes">
+      <div class="notes-bar">
+        <label class="btn back" for="t-d1" id="notesBack">→ חזור</label>
+        <div class="seg small">
+          <label for="n-type" id="lab-n-type">הקלדה</label>
+          <label for="n-draw" id="lab-n-draw">כתב יד</label>
+        </div>
+        <button class="btn danger" type="button" id="notesClear">ניקוי</button>
+      </div>
+      <div class="notes-stage">
+        <textarea id="notesText" class="notes-text" placeholder="ההערות שלכם מהטיול.&#10;&#10;מה אכלנו, מה שווה לחזור אליו, מה אתי אמרה בטיילת, כמה שילמנו על החניה.&#10;&#10;נשמר לבד."></textarea>
+        <div class="notes-draw">
+          <canvas id="notesCanvas"></canvas>
+          <div class="draw-tools">
+            <button class="pen" type="button" data-pen="#123566" aria-pressed="true"></button>
+            <button class="pen" type="button" data-pen="#AE2F30"></button>
+            <button class="pen" type="button" data-pen="#2E8F96"></button>
+            <button class="btn tiny" type="button" id="drawUndo">ביטול</button>
+          </div>
+        </div>
+      </div>
+      <p class="notes-hint">נשמר אוטומטית במכשיר הזה. לא נשלח לשום מקום.</p>
+    </section>
+    
     <section class="panel" id="panel-prep">
       <div class="day-head">
         <div class="day-kicker">לפני שיוצאים</div>
@@ -1473,11 +1589,11 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
 </div>
 
 <script>
-/* Everything above works without this script. It only adds:
-   today detection, the countdown, and saving your check-marks. */
-(function(){
+/* The whole guide works without this script. It only adds:
+   today detection, the countdown, saving your check-marks, and the notepad. */
+(function () {
   "use strict";
-  var KEY = "avidan-eti-jlm-v2";
+  var KEY = "avidan-eti-jlm-v2", NK = "avidan-eti-notes-v1", DK = "avidan-eti-draw-v1";
   var store = null;
   try {
     if (window.localStorage) {
@@ -1489,14 +1605,14 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
 
   var boxes = document.querySelectorAll('input[type=checkbox]');
   var modes = document.querySelectorAll('input[name=mode]');
-  var tabs  = document.querySelectorAll('input[name=tab]');
+  var tabs = document.querySelectorAll('input[name=tab]');
 
   function save() {
     if (!store) return;
     var o = { c: [], m: "", t: "" }, i;
     for (i = 0; i < boxes.length; i++) if (boxes[i].checked) o.c.push(boxes[i].id);
     for (i = 0; i < modes.length; i++) if (modes[i].checked) o.m = modes[i].id;
-    for (i = 0; i < tabs.length;  i++) if (tabs[i].checked)  o.t = tabs[i].id;
+    for (i = 0; i < tabs.length; i++) if (tabs[i].checked) o.t = tabs[i].id;
     try { store.setItem(KEY, JSON.stringify(o)); } catch (e) {}
   }
   function load() {
@@ -1508,7 +1624,7 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
   if (saved) {
     if (saved.c) for (i = 0; i < saved.c.length; i++) { el = document.getElementById(saved.c[i]); if (el) el.checked = true; }
     if (saved.m) { el = document.getElementById(saved.m); if (el) el.checked = true; }
-    if (saved.t) { el = document.getElementById(saved.t); if (el) el.checked = true; }
+    if (saved.t && saved.t !== "t-notes") { el = document.getElementById(saved.t); if (el) el.checked = true; }
   }
   document.addEventListener("change", save, false);
 
@@ -1521,8 +1637,121 @@ footer .sig{font-family:'Frank Ruhl Libre',Georgia,serif; font-size:16px; color:
     if (!saved || !saved.t) { el = document.getElementById("t-" + id); if (el) el.checked = true; }
   }
 
+  /* ---------- notepad: typing ---------- */
+  var ta = document.getElementById("notesText");
+  var cv = document.getElementById("notesCanvas");
+
+  if (ta && store) {
+    try { ta.value = store.getItem(NK) || ""; } catch (e) {}
+    var tt;
+    ta.addEventListener("input", function () {
+      clearTimeout(tt);
+      tt = setTimeout(function () { try { store.setItem(NK, ta.value); } catch (e) {} }, 400);
+    });
+  }
+
+  /* ---------- notepad: handwriting ---------- */
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext("2d"), drawing = false, colour = "#123566", snaps = [], ready = false;
+
+    function sized() {
+      var r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      if (!r.width || !r.height) return false;
+      var prev = cv.width ? cv.toDataURL() : null;
+      cv.width = Math.round(r.width * dpr);
+      cv.height = Math.round(r.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = 2.4;
+      if (prev) { var im = new Image(); im.onload = function () { ctx.drawImage(im, 0, 0, r.width, r.height); }; im.src = prev; }
+      return true;
+    }
+    function restore() {
+      if (!store) return;
+      var data;
+      try { data = store.getItem(DK); } catch (e) { return; }
+      if (!data) return;
+      var img = new Image();
+      img.onload = function () { var r = cv.getBoundingClientRect(); ctx.drawImage(img, 0, 0, r.width, r.height); };
+      img.src = data;
+    }
+    function persist() {
+      if (!store) return;
+      try { store.setItem(DK, cv.toDataURL("image/png")); } catch (e) {}
+    }
+    function pos(ev) {
+      var r = cv.getBoundingClientRect();
+      return { x: ev.clientX - r.left, y: ev.clientY - r.top };
+    }
+
+    cv.addEventListener("pointerdown", function (ev) {
+      ev.preventDefault();
+      if (snaps.length > 10) snaps.shift();
+      snaps.push(cv.toDataURL());
+      drawing = true;
+      try { cv.setPointerCapture(ev.pointerId); } catch (e) {}
+      var p = pos(ev);
+      ctx.strokeStyle = colour;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x + 0.1, p.y); ctx.stroke();
+    });
+    cv.addEventListener("pointermove", function (ev) {
+      if (!drawing) return;
+      ev.preventDefault();
+      var p = pos(ev);
+      ctx.lineTo(p.x, p.y); ctx.stroke();
+    });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(function (t) {
+      cv.addEventListener(t, function () { if (drawing) { drawing = false; persist(); } });
+    });
+
+    document.querySelectorAll(".pen").forEach(function (b) {
+      b.addEventListener("click", function () {
+        colour = b.getAttribute("data-pen");
+        document.querySelectorAll(".pen").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      });
+    });
+    var undo = document.getElementById("drawUndo");
+    if (undo) undo.addEventListener("click", function () {
+      var last = snaps.pop();
+      if (!last) return;
+      var r = cv.getBoundingClientRect();
+      ctx.clearRect(0, 0, r.width, r.height);
+      var im = new Image();
+      im.onload = function () { ctx.drawImage(im, 0, 0, r.width, r.height); persist(); };
+      im.src = last;
+    });
+
+    function initCanvas() { if (!ready && sized()) { ready = true; restore(); } }
+    var notesTab = document.getElementById("t-notes");
+    if (notesTab) notesTab.addEventListener("change", function () { setTimeout(initCanvas, 50); });
+    window.addEventListener("resize", function () { if (ready) sized(); });
+    setTimeout(initCanvas, 300);
+  }
+
+  var clr = document.getElementById("notesClear");
+  if (clr) clr.addEventListener("click", function () {
+    var drawMode = document.getElementById("n-draw").checked;
+    if (!window.confirm(drawMode ? "\u05dc\u05de\u05d7\u05d5\u05e7 \u05d0\u05ea \u05db\u05dc \u05d4\u05e6\u05d9\u05d5\u05e8?" : "\u05dc\u05de\u05d7\u05d5\u05e7 \u05d0\u05ea \u05db\u05dc \u05d4\u05d4\u05e2\u05e8\u05d5\u05ea?")) return;
+    if (drawMode && cv) {
+      var r = cv.getBoundingClientRect();
+      cv.getContext("2d").clearRect(0, 0, r.width, r.height);
+      if (store) { try { store.removeItem(DK); } catch (e) {} }
+    } else if (ta) {
+      ta.value = "";
+      if (store) { try { store.removeItem(NK); } catch (e) {} }
+    }
+  });
+
+  /* the back button returns to whichever day you came from */
+  var backLab = document.getElementById("notesBack");
+  for (i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("change", (function (r) {
+      return function () { if (r.id !== "t-notes" && backLab) backLab.setAttribute("for", r.id); };
+    })(tabs[i]));
+  }
+
+  /* ---------- countdown ---------- */
   var cd = document.getElementById("countdown");
-  var start = new Date(2026, 7, 4, 9, 0), end = new Date(2026, 7, 7, 15, 0), now = new Date();
+  var start = new Date(2026, 7, 4, 10, 0), end = new Date(2026, 7, 7, 15, 0), now = new Date();
   if (now < start) {
     var days = Math.ceil((start - now) / 86400000);
     cd.innerHTML = days === 1 ? "<b>\u05de\u05d7\u05e8</b> \u05d9\u05d5\u05e6\u05d0\u05d9\u05dd" : "\u05e2\u05d5\u05d3 <b>" + days + "</b> \u05d9\u05de\u05d9\u05dd";

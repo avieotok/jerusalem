@@ -1,7 +1,7 @@
 /* Offline cache for the Jerusalem guide.
    Serves from cache first so the app opens instantly and works with no signal,
    while quietly refreshing in the background when there is a connection. */
-const CACHE = "jlm-avidan-eti-v2";
+const CACHE = "jlm-avidan-eti-v3";
 const ASSETS = ["./", "./index.html"];
 
 self.addEventListener("install", (e) => {
