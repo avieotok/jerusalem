@@ -1,7 +1,7 @@
 /* Offline support for the Jerusalem guide.
    Network-first for the page itself, so a new upload always wins and you never
    get stuck on an old version. Cache is the fallback when there is no signal. */
-const CACHE = "jlm-avidan-eti-v5";
+const CACHE = "jlm-avidan-eti-v6";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
